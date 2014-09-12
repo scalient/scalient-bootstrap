@@ -10,6 +10,7 @@
     "recipe[osx-bootstrap::xcode]",
     "recipe[osx-bootstrap::preferences]",
     "recipe[osx-bootstrap::machine]",
-    "recipe[osx-bootstrap::includes]"
+    "recipe[osx-bootstrap::includes]",
+    "recipe[personal]"
   ]
 }
