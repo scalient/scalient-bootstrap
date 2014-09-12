@@ -1,2 +1,53 @@
+SITE
+  remote: https://supermarket.getchef.com/api/v1
+  specs:
+    homebrew (1.9.0)
+
+GIT
+  remote: https://github.com/carsomyr/chef-plist
+  path: vendor/cookbooks/plist
+  ref: master
+  sha: 00642094aea600c9f367a41faa2a71dea4aa8ddf
+  specs:
+    plist (0.9.0)
+
+GIT
+  remote: https://github.com/carsomyr/osx-bootstrap
+  path: vendor/cookbooks/osx-bootstrap
+  ref: master
+  sha: 0ac836595ea49af246558ae6c50d55b38bf6e1de
+  specs:
+    osx-bootstrap (0.9.0)
+      homebrew (>= 0.0.0)
+      plist (>= 0.0.0)
+      rbenv (>= 0.0.0)
+      ruby_build (>= 0.0.0)
+
+GIT
+  remote: https://github.com/fnichol/chef-rbenv
+  ref: master
+  sha: 0a3018634bafe58ad21c6ee271af015220e444b9
+  specs:
+    rbenv (0.7.3)
+
+GIT
+  remote: https://github.com/fnichol/chef-ruby_build
+  ref: master
+  sha: 4d3361995a6953076951693eff1b326ab499fe1e
+  specs:
+    ruby_build (0.8.1)
+
+PATH
+  remote: vendor/cookbooks/personal
+  specs:
+    personal (0.9.0)
+      osx-bootstrap (>= 0.0.0)
+
 DEPENDENCIES
+  homebrew (>= 0)
+  osx-bootstrap (>= 0)
+  personal (>= 0)
+  plist (>= 0)
+  rbenv (>= 0)
+  ruby_build (>= 0)
 

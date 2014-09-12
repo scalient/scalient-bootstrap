@@ -14,18 +14,15 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-site "https://supermarket.getchef.com/api/v1"
+maintainer "No Body"
+maintainer_email "nobody@nobody.io"
+license "Apache-2.0"
+description "The user's personal cookbook"
+long_description "The user's personal cookbook. Put your customizations here, and use it to consolidate the" \
+  " functionality of others' cookbooks."
+version "0.9.0"
 
-cookbook "homebrew"
-cookbook "osx-bootstrap",
-         github: "carsomyr/osx-bootstrap",
-         path: "vendor/cookbooks/osx-bootstrap"
-cookbook "personal",
-         path: "vendor/cookbooks/personal"
-cookbook "plist",
-         github: "carsomyr/chef-plist",
-         path: "vendor/cookbooks/plist"
-cookbook "rbenv",
-         github: "fnichol/chef-rbenv"
-cookbook "ruby_build",
-         github: "fnichol/chef-ruby_build"
+supports "mac_os_x"
+supports "mac_os_x_server"
+
+depends "osx-bootstrap"
