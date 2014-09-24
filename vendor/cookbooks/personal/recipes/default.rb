@@ -16,4 +16,3 @@ template (owner_dir + ".profile.d/0010_clark.sh").to_s do
   mode 0644
   action :nothing
 end.action(:create)
-
