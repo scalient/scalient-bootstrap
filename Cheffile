@@ -16,7 +16,6 @@
 
 site "https://supermarket.getchef.com/api/v1"
 
-cookbook "homebrew"
 cookbook "osx-bootstrap",
          github: "carsomyr/osx-bootstrap",
          path: "vendor/cookbooks/osx-bootstrap"
@@ -29,3 +28,8 @@ cookbook "rbenv",
          github: "fnichol/chef-rbenv"
 cookbook "ruby_build",
          github: "fnichol/chef-ruby_build"
+cookbook "scalient-bootstrap",
+         git: "git@github.com:scalient/chef-repo",
+         path: "vendor/cookbooks/scalient-bootstrap",
+         ref: "bootstrap"
+

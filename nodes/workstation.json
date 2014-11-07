@@ -11,6 +11,11 @@
     "recipe[osx-bootstrap::preferences]",
     "recipe[osx-bootstrap::machine]",
     "recipe[osx-bootstrap::includes]",
+    "recipe[scalient-bootstrap]",
+    "recipe[scalient-bootstrap::homebrew]",
+    "recipe[scalient-bootstrap::sudo]",
+    "recipe[scalient-bootstrap::ruby]",
+    "recipe[scalient-bootstrap::miscellaneous]",
     "recipe[personal]"
   ]
 }
