@@ -14,4 +14,5 @@ supports "mac_os_x"
 supports "mac_os_x_server"
 
 depends "osx-bootstrap"
+depends "rbenv"
 depends "sudo"
