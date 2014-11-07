@@ -12,6 +12,7 @@
     "recipe[osx-bootstrap::machine]",
     "recipe[osx-bootstrap::includes]",
     "recipe[scalient-bootstrap]",
-    "recipe[scalient-bootstrap::homebrew]"
+    "recipe[scalient-bootstrap::homebrew]",
+    "recipe[scalient-bootstrap::sudo]"
   ]
 }

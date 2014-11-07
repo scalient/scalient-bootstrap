@@ -2,6 +2,7 @@ SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
     homebrew (1.9.2)
+    sudo (2.7.1)
 
 GIT
   remote: https://github.com/carsomyr/chef-plist
@@ -42,6 +43,7 @@ PATH
   specs:
     scalient-bootstrap (0.9.0)
       osx-bootstrap (>= 0.0.0)
+      sudo (>= 0.0.0)
 
 DEPENDENCIES
   osx-bootstrap (>= 0)
