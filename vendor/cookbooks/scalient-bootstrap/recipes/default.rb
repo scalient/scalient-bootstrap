@@ -13,18 +13,3 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations under
 # the License.
-
-site "https://supermarket.getchef.com/api/v1"
-
-cookbook "osx-bootstrap",
-         github: "carsomyr/osx-bootstrap",
-         path: "vendor/cookbooks/osx-bootstrap"
-cookbook "plist",
-         github: "carsomyr/chef-plist",
-         path: "vendor/cookbooks/plist"
-cookbook "rbenv",
-         github: "fnichol/chef-rbenv"
-cookbook "ruby_build",
-         github: "fnichol/chef-ruby_build"
-cookbook "scalient-bootstrap",
-         path: "vendor/cookbooks/scalient-bootstrap"
