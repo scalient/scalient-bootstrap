@@ -15,6 +15,7 @@
     "recipe[scalient-bootstrap::homebrew]",
     "recipe[scalient-bootstrap::sudo]",
     "recipe[scalient-bootstrap::ruby]",
+    "recipe[scalient-bootstrap::ssh]",
     "recipe[scalient-bootstrap::miscellaneous]"
   ]
 }
