@@ -26,26 +26,9 @@ recipe = self
 work_dir = Pathname.new(node["scalient-bootstrap"]["work_root"])
 stored_keys = Scalient::Bootstrap::Ssh.stored_keys(owner)
 
-(Pathname.glob("#{owner_dir.to_s}/.ssh/id_{rsa,dsa}") \
- + Pathname.glob("#{work_dir.to_s}/*/auth/keys/*/*.{rsa,dsa}")).each do |key_file|
-  public_key = OpenSSL::PKey.read(key_file.open("rb") { |f| f.read }).public_key
-
-  case public_key
-    when OpenSSL::PKey::RSA
-      blob = [7].pack("N") + "ssh-rsa" \
-        + public_key.e.to_s(0) \
-        + public_key.n.to_s(0)
-    when OpenSSL::PKey::DSA
-      blob = [7].pack("N") + "ssh-dss" \
-        + public_key.p.to_s(0) \
-        + public_key.q.to_s(0) \
-        + public_key.g.to_s(0) \
-        + public_key.pub_key.to_s(0)
-    else
-      raise "Unsupported key type #{public_key.class.to_s.dump}"
-  end
-
-  fingerprint = OpenSSL::Digest::MD5.new(blob).to_s.scan(Regexp.new("[0-9a-f]{2}")).join(":")
+(Pathname.glob("#{owner_dir.to_s}/.ssh/id_{rsa,dsa,ecdsa}") \
+ + Pathname.glob("#{work_dir.to_s}/*/auth/keys/*/*.{rsa,dsa,ecdsa}")).each do |key_file|
+  fingerprint = OsX::Bootstrap::Ssh.to_public_fingerprint(key_file)
 
   if !stored_keys.find { |key| key.fingerprint == fingerprint }
     file key_file.to_s do
@@ -54,7 +37,7 @@ stored_keys = Scalient::Bootstrap::Ssh.stored_keys(owner)
     end.action(:create)
 
     bash "Add the private key file `#{key_file.to_s}` to the keychain" do
-      code "ssh-agent -- ssh-add -K -- #{Shellwords.escape(key_file.to_s)}"
+      code "ssh-agent -- ssh-add -M -- #{Shellwords.escape(key_file.to_s)}"
       user recipe.owner
       group recipe.owner_group
 

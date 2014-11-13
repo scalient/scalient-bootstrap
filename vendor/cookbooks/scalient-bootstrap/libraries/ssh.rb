@@ -23,7 +23,7 @@ module Scalient
         include Chef::Mixin::ShellOut
       end
 
-      KEY_PATTERN = Regexp.new("\\A([1-9][0-9]*) ((?:[0-9a-f]{2}:){15}[0-9a-f]{2}) (.*) \\((?:RSA|DSA)\\)\\z")
+      KEY_PATTERN = Regexp.new("\\A([1-9][0-9]*) ((?:[0-9a-f]{2}:){15}[0-9a-f]{2}) (.*) \\((?:RSA|DSA|ECDSA)\\)\\z")
       Key = Struct.new(:length, :fingerprint, :file)
 
       # Lists the SSH agent's stored keys.
