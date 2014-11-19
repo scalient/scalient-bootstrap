@@ -8,7 +8,7 @@ GIT
   remote: git@github.com:scalient/chef-repo
   path: vendor/cookbooks/scalient-bootstrap
   ref: bootstrap
-  sha: 5e4eb7e8709e0700abe7f527803be982c3a7a6fa
+  sha: 5be04888e89d2cf2203c033d70eae29e1bec07ca
   specs:
     scalient-bootstrap (0.9.0)
       osx-bootstrap (>= 0.0.0)
@@ -27,7 +27,7 @@ GIT
   remote: https://github.com/carsomyr/osx-bootstrap
   path: vendor/cookbooks/osx-bootstrap
   ref: master
-  sha: 5abf753f158452f3d91a7e1996718a74940d319a
+  sha: c1bc74cf6b441f4653b0ddb1c22d75d928c938ed
   specs:
     osx-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
