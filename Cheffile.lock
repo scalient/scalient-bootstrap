@@ -16,7 +16,7 @@ GIT
   remote: https://github.com/carsomyr/osx-bootstrap
   path: vendor/cookbooks/osx-bootstrap
   ref: master
-  sha: daddf921d0eaf1ad95d406970b2b788eee519190
+  sha: 05b09c74018642ad56e9a172350ca21c55671c76
   specs:
     osx-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
