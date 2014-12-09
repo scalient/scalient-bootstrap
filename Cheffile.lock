@@ -1,14 +1,14 @@
 SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
-    homebrew (1.9.2)
+    homebrew (1.10.0)
     sudo (2.7.1)
 
 GIT
   remote: https://github.com/carsomyr/chef-plist
   path: vendor/cookbooks/plist
   ref: master
-  sha: f95fe52a770178c0586e63f87ddc07e5f303e584
+  sha: e21c838e3e897d6b2ffbdb8ad9bacb21f98eee04
   specs:
     plist (0.9.0)
 
@@ -16,7 +16,7 @@ GIT
   remote: https://github.com/carsomyr/osx-bootstrap
   path: vendor/cookbooks/osx-bootstrap
   ref: master
-  sha: 05b09c74018642ad56e9a172350ca21c55671c76
+  sha: 865d2c669cae87a46242d454cb8e20d834442b62
   specs:
     osx-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
