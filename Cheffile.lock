@@ -1,7 +1,9 @@
 SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
-    homebrew (1.10.0)
+    build-essential (2.2.1)
+    homebrew (1.12.0)
+      build-essential (>= 2.1.2)
     sudo (2.7.1)
 
 GIT
@@ -16,7 +18,7 @@ GIT
   remote: https://github.com/carsomyr/osx-bootstrap
   path: vendor/cookbooks/osx-bootstrap
   ref: master
-  sha: 865d2c669cae87a46242d454cb8e20d834442b62
+  sha: 6739a488f4a4ee4d1a7cfdcc41cfeb37f9468c9d
   specs:
     osx-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
