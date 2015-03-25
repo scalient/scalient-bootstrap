@@ -26,6 +26,7 @@ include_recipe "osx-bootstrap::rbenv"
 recipe = self
 rbenv_root = Pathname.new(node["osx-bootstrap"]["prefix"]) + "var/rbenv"
 versions = node["osx-bootstrap"]["rbenv"]["versions"]
+global_version = node["osx-bootstrap"]["rbenv"]["global_version"]
 
 versions = [versions] \
   if versions.is_a?(String)
@@ -35,7 +36,13 @@ versions = versions.map do |version|
     if version == "inherit"
 
   version
-end.select
+end
+
+global_version = ENV["RBENV_VERSION"] \
+  if global_version == "inherit"
+
+versions = versions.push(global_version).uniq \
+  if global_version
 
 ruby_block "install gems for various rbenv Rubies" do
   block do
