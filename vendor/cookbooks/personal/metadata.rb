@@ -14,6 +14,7 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
+name "personal"
 maintainer "No Body"
 maintainer_email "nobody@nobody.io"
 license "Apache-2.0"
