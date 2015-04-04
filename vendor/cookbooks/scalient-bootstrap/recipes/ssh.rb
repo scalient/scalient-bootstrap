@@ -27,7 +27,7 @@ work_dir = Pathname.new(node["scalient-bootstrap"]["work_root"])
 stored_keys = Scalient::Bootstrap::Ssh.stored_keys(owner)
 
 (Pathname.glob("#{owner_dir.to_s}/.ssh/id_{rsa,dsa,ecdsa}") \
- + Pathname.glob("#{work_dir.to_s}/*/auth/keys/*/*.{rsa,dsa,ecdsa}")).each do |key_file|
+ + Pathname.glob("#{work_dir.to_s}/*/auth/keys/ssh/*.pem")).each do |key_file|
   fingerprint = OsX::Bootstrap::Ssh.to_public_fingerprint(key_file)
 
   if !stored_keys.find { |key| key.fingerprint == fingerprint }
