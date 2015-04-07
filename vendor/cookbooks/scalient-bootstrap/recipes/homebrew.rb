@@ -30,6 +30,6 @@ end
 
 node["scalient-bootstrap"]["homebrew"]["casks"].each do |cask|
   homebrew_cask cask do
-    action :install
+    action :update
   end
 end
