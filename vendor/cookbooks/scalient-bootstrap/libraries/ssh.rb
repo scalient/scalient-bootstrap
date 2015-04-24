@@ -14,6 +14,7 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
+require "base64"
 require "chef/shell_out"
 
 module Scalient
@@ -23,12 +24,12 @@ module Scalient
         include Chef::Mixin::ShellOut
       end
 
-      KEY_PATTERN = Regexp.new("\\A([1-9][0-9]*) ((?:[0-9a-f]{2}:){15}[0-9a-f]{2}) (.*) \\((?:RSA|DSA|ECDSA)\\)\\z")
-      Key = Struct.new(:length, :fingerprint, :file)
+      KEY_PATTERN = Regexp.new("\\A([a-z0-9\\-]+) ([A-Za-z0-9\\+/]+={0,2}) ([^ ]+)\\z")
+      Key = Struct.new(:type, :content, :file)
 
       # Lists the SSH agent's stored keys.
       def self.stored_keys(user = nil)
-        cmd = shell_out("ssh-agent", "--", "ssh-add", "-l", user: user)
+        cmd = shell_out("ssh-agent", "--", "ssh-add", "-L", user: user)
 
         if !cmd.error?
           cmd.stdout.chomp("\n").split("\n", -1).map do |line|
@@ -37,7 +38,7 @@ module Scalient
             raise "Invalid line #{line.dump}" \
               if !m
 
-            Key.new(m[1].to_i, m[2], Pathname.new(m[3]))
+            Key.new(m[1], Base64.strict_decode64(m[2]), Pathname.new(m[3]))
           end
         else
           cmd.error! \

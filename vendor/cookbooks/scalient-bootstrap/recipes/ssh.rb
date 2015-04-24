@@ -28,9 +28,9 @@ stored_keys = Scalient::Bootstrap::Ssh.stored_keys(owner)
 
 (Pathname.glob("#{owner_dir.to_s}/.ssh/id_{rsa,dsa,ecdsa}") \
  + Pathname.glob("#{work_dir.to_s}/*/auth/keys/ssh/*.pem")).each do |key_file|
-  fingerprint = OsX::Bootstrap::Ssh.to_public_fingerprint(key_file)
+  content = OsX::Bootstrap::Ssh.to_public_blob(key_file)
 
-  if !stored_keys.find { |key| key.fingerprint == fingerprint }
+  if !stored_keys.find { |key| key.content == content }
     file key_file.to_s do
       mode 0600
       action :nothing
