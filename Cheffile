@@ -29,7 +29,5 @@ cookbook "rbenv",
 cookbook "ruby_build",
          github: "fnichol/chef-ruby_build"
 cookbook "scalient-bootstrap",
-         git: "git@github.com:scalient/chef-repo",
-         path: "vendor/cookbooks/scalient-bootstrap",
-         ref: "bootstrap"
-
+         git: "git@github.com:scalient/scalient-bootstrap",
+         path: "vendor/cookbooks/scalient-bootstrap"
