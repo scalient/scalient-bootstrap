@@ -1,10 +1,10 @@
 SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
-    build-essential (2.2.3)
-    homebrew (1.12.0)
+    build-essential (2.2.4)
+    homebrew (1.13.0)
       build-essential (>= 2.1.2)
-    sudo (2.7.1)
+    sudo (2.7.2)
 
 GIT
   remote: https://github.com/carsomyr/chef-plist
@@ -18,7 +18,7 @@ GIT
   remote: https://github.com/carsomyr/osx-bootstrap
   path: vendor/cookbooks/osx-bootstrap
   ref: master
-  sha: d0c3a076fa34fcd94f5d64711be24c537c240e12
+  sha: 418fb34b333d6419755b5fce4de584a4edafe7d6
   specs:
     osx-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
@@ -29,9 +29,10 @@ GIT
 GIT
   remote: https://github.com/fnichol/chef-rbenv
   ref: master
-  sha: 0a3018634bafe58ad21c6ee271af015220e444b9
+  sha: b8f86b40e33a28f4cae09e9a72ff9b1d88a49cae
   specs:
-    rbenv (0.7.3)
+    rbenv (1.0.1)
+      ruby_build (>= 0.0.0)
 
 GIT
   remote: https://github.com/fnichol/chef-ruby_build
