@@ -36,21 +36,21 @@ stored_keys = Scalient::Bootstrap::Ssh.stored_keys(owner)
       action :nothing
     end.action(:create)
 
-    bash "Add the private key file `#{key_file.to_s}` to the keychain" do
-      code "ssh-agent -- ssh-add -M -- #{Shellwords.escape(key_file.to_s)}"
+    execute "Add the private key file `#{key_file.to_s}` to the keychain" do
+      command ["ssh-agent", "--", "ssh-add", "-K", "--", key_file.to_s]
       user recipe.owner
       group recipe.owner_group
 
       # Kill any running SSH agent so that another one can start up and see the newly added key.
-      notifies :run, "bash[`killall -- ssh-agent`]", :immediately
+      notifies :run, "execute[`killall -- ssh-agent`]", :immediately
 
       action :run
     end
   end
 end
 
-bash "`killall -- ssh-agent`" do
-  code "killall -u #{Shellwords.escape(recipe.owner)} -- ssh-agent"
+execute "`killall -- ssh-agent`" do
+  command ["killall", "-u", recipe.owner, "--", "ssh-agent"]
   returns [0, 1]
   notifies :write, "log[shell restart notice]", :immediately
   action :nothing
