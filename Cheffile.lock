@@ -6,24 +6,21 @@ SITE
     chef_handler (1.3.0)
     homebrew (2.1.0)
       build-essential (>= 2.1.2)
+    ruby_build (0.8.0)
     seven_zip (2.0.0)
       windows (>= 1.2.2)
     sudo (2.9.0)
     windows (1.40.0)
       chef_handler (>= 0.0.0)
-    yum (3.10.0)
-    yum-epel (0.7.0)
-      yum (>= 3.6.3)
 
 GIT
   remote: git@github.com:scalient/scalient-bootstrap
   path: vendor/cookbooks/scalient-bootstrap
   ref: master
-  sha: 3dc1db4606eb535b363e4b99128405c0e7c24a55
+  sha: 67e190c9e1b9cf08492f3c8c1acf3174c6274601
   specs:
     scalient-bootstrap (0.9.0)
       osx-bootstrap (>= 0.0.0)
-      rbenv (>= 0.0.0)
       sudo (>= 0.0.0)
 
 GIT
@@ -38,29 +35,20 @@ GIT
   remote: https://github.com/carsomyr/osx-bootstrap
   path: vendor/cookbooks/osx-bootstrap
   ref: master
-  sha: 6d546203e5edf57b7b7c0af5153b8f4a308d011a
+  sha: f770d75b9dbb3162f07ce28d7bce88bd26f1dcea
   specs:
     osx-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
       plist (>= 0.0.0)
-      rbenv (>= 0.0.0)
-      ruby_build (>= 0.0.0)
+      ruby_rbenv (>= 0.0.0)
 
 GIT
-  remote: https://github.com/fnichol/chef-rbenv
+  remote: https://github.com/chef-rbenv/ruby_rbenv
   ref: master
   sha: fba2ddba79a86e57d0abe30da089921080969cda
   specs:
-    rbenv (1.0.1)
+    ruby_rbenv (1.0.1)
       ruby_build (>= 0.0.0)
-
-GIT
-  remote: https://github.com/fnichol/chef-ruby_build
-  ref: master
-  sha: 00235b99a82c24aaaac25ddf99c393675d9dd0ca
-  specs:
-    ruby_build (0.8.1)
-      yum-epel (>= 0.0.0)
 
 PATH
   remote: vendor/cookbooks/personal
@@ -72,7 +60,6 @@ DEPENDENCIES
   osx-bootstrap (>= 0)
   personal (>= 0)
   plist (>= 0)
-  rbenv (>= 0)
-  ruby_build (>= 0)
+  ruby_rbenv (>= 0)
   scalient-bootstrap (>= 0)
 
