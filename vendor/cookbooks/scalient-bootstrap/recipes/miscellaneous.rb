@@ -17,3 +17,7 @@
 service "com.apple.locate" do
   action :enable
 end
+
+service "com.apple.rcd" do
+  action :disable
+end
