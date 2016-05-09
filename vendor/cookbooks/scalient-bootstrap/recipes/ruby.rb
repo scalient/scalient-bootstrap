@@ -44,32 +44,13 @@ global_version = ENV["RBENV_VERSION"] \
 versions = versions.push(global_version).uniq \
   if global_version
 
-ruby_block "install gems for various rbenv Rubies" do
-  block do
-    # Install gems as the original user.
-    child_pid = fork do
-      user = Etc.getpwnam(recipe.owner)
-
-      Process.uid = user.uid
-      Process.gid = user.gid
-
-      node["scalient-bootstrap"]["ruby"]["gems"].each do |gem|
-        versions.each do |version|
-          recipe.rbenv_gem gem do
-            user recipe.owner
-            root_path rbenv_root.to_s
-            rbenv_version version
-            action :nothing
-          end.run_action(:install)
-        end
-      end
+node["scalient-bootstrap"]["ruby"]["gems"].each do |gem|
+  versions.each do |version|
+    rbenv_gem gem do
+      user recipe.owner
+      root_path rbenv_root.to_s
+      rbenv_version version
+      action :install
     end
-
-    Process.waitpid(child_pid)
-
-    raise "Gem installation failed" \
-      if $?.exitstatus != 0
   end
-
-  action :run
 end
