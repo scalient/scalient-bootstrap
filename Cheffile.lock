@@ -1,11 +1,16 @@
 SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
-    build-essential (3.2.0)
+    build-essential (4.0.0)
+      mingw (>= 0.0.0)
       seven_zip (>= 0.0.0)
     chef_handler (1.3.0)
+    compat_resource (12.9.1)
     homebrew (2.1.0)
       build-essential (>= 2.1.2)
+    mingw (1.0.0)
+      compat_resource (>= 0.0.0)
+      seven_zip (>= 0.0.0)
     ruby_build (0.8.0)
     seven_zip (2.0.0)
       windows (>= 1.2.2)
@@ -17,7 +22,7 @@ GIT
   remote: git@github.com:scalient/scalient-bootstrap
   path: vendor/cookbooks/scalient-bootstrap
   ref: master
-  sha: 67e190c9e1b9cf08492f3c8c1acf3174c6274601
+  sha: d24296ff73b74d1e1ae08565706df1f1eeb963b7
   specs:
     scalient-bootstrap (0.9.0)
       osx-bootstrap (>= 0.0.0)
@@ -27,15 +32,15 @@ GIT
   remote: https://github.com/carsomyr/chef-plist
   path: vendor/cookbooks/plist
   ref: master
-  sha: aacf6c2af72cf3699995618a179ec88f4315cbd4
+  sha: be7b3e2bb6c57c301c6bfa7381951e92633d8429
   specs:
-    plist (0.9.1)
+    plist (0.9.3)
 
 GIT
   remote: https://github.com/carsomyr/osx-bootstrap
   path: vendor/cookbooks/osx-bootstrap
   ref: master
-  sha: f770d75b9dbb3162f07ce28d7bce88bd26f1dcea
+  sha: fcf8f39e701f595989a105156a1294edcc7119e2
   specs:
     osx-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
