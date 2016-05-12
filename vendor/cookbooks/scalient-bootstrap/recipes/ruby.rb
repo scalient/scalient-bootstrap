@@ -22,9 +22,12 @@ class << self
 end
 
 include_recipe "osx-bootstrap::rbenv"
+include_recipe "osx-bootstrap::homebrew"
+include_recipe "osx-bootstrap::java"
 
 recipe = self
-rbenv_root = Pathname.new(node["osx-bootstrap"]["prefix"]) + "var/rbenv"
+prefix = Pathname.new(node["osx-bootstrap"]["prefix"])
+rbenv_root = prefix + "var/rbenv"
 versions = node["osx-bootstrap"]["rbenv"]["versions"]
 global_version = node["osx-bootstrap"]["rbenv"]["global_version"]
 
@@ -53,4 +56,34 @@ node["scalient-bootstrap"]["ruby"]["gems"].each do |gem|
       action :install
     end
   end
+end
+
+homebrew_cask "rubymine" do
+  notifies :run, "ruby_block[run RubyMine postinstall]", :immediately
+  action :update
+end
+
+ruby_block "run RubyMine postinstall" do
+  block do
+    app_install_dir = Pathname.new(
+        shell_out!(
+            (prefix + "bin/brew").to_s, "cask", "info", "--", "rubymine"
+        ).stdout.split("\n", -1)[3].split(" ", -1)[0]
+    ) + "RubyMine.app"
+
+    version_name = "RubyMine#{app_install_dir.parent.basename.to_s}"
+
+    recipe.template (prefix + "bin/mine").to_s do
+      source "ruby-mine.erb"
+      owner recipe.owner
+      group recipe.owner_group
+      mode 0755
+      helper(:app_install_dir) { app_install_dir }
+      helper(:config_dir) { recipe.owner_dir + "Library/Preferences" + version_name }
+      helper(:cache_dir) { recipe.owner_dir + "Library/Caches" + version_name }
+      action :create
+    end
+  end
+
+  action :nothing
 end
