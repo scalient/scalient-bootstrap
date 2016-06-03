@@ -65,20 +65,21 @@ end
 
 ruby_block "run RubyMine postinstall" do
   block do
-    app_install_dir = Pathname.new(
+    version_line_pattern = Regexp.new("\\Arubymine: (.*)\\z")
+
+    version = version_line_pattern.match(
         shell_out!(
             (prefix + "bin/brew").to_s, "cask", "info", "--", "rubymine"
-        ).stdout.split("\n", -1)[3].split(" ", -1)[0]
-    ) + "RubyMine.app"
+        ).stdout.split("\n", -1)[0]
+    )[1]
 
-    version_name = "RubyMine#{app_install_dir.parent.basename.to_s}"
+    version_name = "RubyMine#{version}"
 
     recipe.template (prefix + "bin/mine").to_s do
       source "ruby-mine.erb"
       owner recipe.owner
       group recipe.owner_group
       mode 0755
-      helper(:app_install_dir) { app_install_dir }
       helper(:config_dir) { recipe.owner_dir + "Library/Preferences" + version_name }
       helper(:cache_dir) { recipe.owner_dir + "Library/Caches" + version_name }
       action :create
