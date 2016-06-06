@@ -33,8 +33,8 @@ stored_keys = Scalient::Bootstrap::Ssh.stored_keys(owner)
   if !stored_keys.find { |key| key.content == content }
     file key_file.to_s do
       mode 0600
-      action :nothing
-    end.action(:create)
+      action :create
+    end
 
     execute "Add the private key file `#{key_file.to_s}` to the keychain" do
       command ["ssh-agent", "--", "ssh-add", "-K", "--", key_file.to_s]
