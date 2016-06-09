@@ -6,7 +6,7 @@ SITE
       mingw (>= 1.1)
       seven_zip (>= 0.0.0)
     chef_handler (1.4.0)
-    compat_resource (12.10.5)
+    compat_resource (12.10.6)
     homebrew (2.1.0)
       build-essential (>= 2.1.2)
     mingw (1.1.0)
@@ -31,7 +31,7 @@ GIT
   remote: https://github.com/carsomyr/osx-bootstrap
   path: vendor/cookbooks/osx-bootstrap
   ref: master
-  sha: d6d7c82f6051fefe4a4b42154607766adf266079
+  sha: a226758ff39e1e5f3d952bb202413d7477858a25
   specs:
     osx-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
