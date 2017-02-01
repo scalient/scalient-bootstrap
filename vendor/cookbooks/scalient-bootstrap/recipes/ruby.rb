@@ -19,11 +19,12 @@ require "pathname"
 
 class << self
   include OsX::Bootstrap
+  include OsX::Bootstrap::Rbenv
 end
 
 include_recipe "osx-bootstrap::rbenv"
 include_recipe "osx-bootstrap::homebrew"
-include_recipe "osx-bootstrap::java"
+include_recipe "scalient-bootstrap::java"
 
 recipe = self
 prefix = Pathname.new(node["osx-bootstrap"]["prefix"])
@@ -49,11 +50,19 @@ versions = versions.push(global_version).uniq \
 
 node["scalient-bootstrap"]["ruby"]["gems"].each do |gem|
   versions.each do |version|
-    rbenv_gem gem do
-      user recipe.owner
-      root_path rbenv_root.to_s
-      rbenv_version version
-      action :install
+    ruby_block "install gem #{gem} for rbenv Ruby version #{version}" do
+      block do
+        recipe.as_user(recipe.owner) do
+          recipe.rbenv_gem gem do
+            user recipe.owner
+            root_path rbenv_root.to_s
+            rbenv_version version
+            action :nothing
+          end.run_action(:install)
+        end
+      end
+
+      action :run
     end
   end
 end
@@ -65,17 +74,17 @@ end
 
 ruby_block "run RubyMine postinstall" do
   block do
-    version_line_pattern = Regexp.new("\\Arubymine: (.*)\\z")
+    version_line_pattern = Regexp.new("\\Arubymine: (.*)\\..*\\z")
 
     version = version_line_pattern.match(
         shell_out!(
-            (prefix + "bin/brew").to_s, "cask", "info", "--", "rubymine"
+            (prefix + "bin/brew").to_s, "cask", "info", "--", "rubymine", user: recipe.owner
         ).stdout.split("\n", -1)[0]
     )[1]
 
     version_name = "RubyMine#{version}"
 
-    recipe.template (prefix + "bin/mine").to_s do
+    recipe.template (prefix + "bin/rubymine").to_s do
       source "ruby-mine.erb"
       owner recipe.owner
       group recipe.owner_group

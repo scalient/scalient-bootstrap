@@ -15,3 +15,4 @@
 # the License.
 
 default["scalient-bootstrap"]["miscellaneous"]["ambient_light_sensor"]["adjust_brightness"] = false
+default["scalient-bootstrap"]["miscellaneous"]["launch_services"]["ls_quarantine"] = false

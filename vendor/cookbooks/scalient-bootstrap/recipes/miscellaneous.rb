@@ -42,7 +42,7 @@ end
 
 plist_file "com.apple.LaunchServices" do
   # Don't warn about applications freshly downloaded from the internet.
-  content(LSQuarantine: false)
+  content(LSQuarantine: prefs["launch_services"]["ls_quarantine"])
 
   format :binary
 

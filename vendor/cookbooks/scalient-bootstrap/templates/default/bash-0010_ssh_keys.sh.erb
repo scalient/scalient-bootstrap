@@ -1,0 +1,13 @@
+#  ____________________________________
+# / This file is managed by Chef. Your \
+# \ changes will be overwritten.       /
+#  ------------------------------------
+#         \   ^__^
+#          \  (oo)\_______
+#             (__)\       )\/\
+#                 ||----w |
+#                 ||     ||
+
+<% key_files.each do |key_file| %>
+ssh-add -K -- <%= Shellwords.escape(key_file.to_s) -%> &> /dev/null
+<% end %>

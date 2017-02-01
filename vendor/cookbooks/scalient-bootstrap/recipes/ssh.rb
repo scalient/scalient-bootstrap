@@ -22,43 +22,41 @@ class << self
   include OsX::Bootstrap
 end
 
+include_recipe "osx-bootstrap::ssh"
+
 recipe = self
 work_dir = Pathname.new(node["scalient-bootstrap"]["work_root"])
-stored_keys = Scalient::Bootstrap::Ssh.stored_keys(owner)
 
-(Pathname.glob("#{owner_dir.to_s}/.ssh/id_{rsa,dsa,ecdsa}") \
- + Pathname.glob("#{work_dir.to_s}/*/auth/keys/ssh/*.pem")).each do |key_file|
-  content = OsX::Bootstrap::Ssh.to_public_blob(key_file)
+key_files = (Pathname.glob("#{owner_dir.to_s}/.ssh/id_{rsa,dsa,ecdsa}") +
+    Pathname.glob("#{work_dir.to_s}/*/auth/keys/ssh/*.pem")).each do |key_file|
+  begin
+    run_context.resource_collection.find(file: key_file.to_s)
 
-  if !stored_keys.find { |key| key.content == content }
-    file key_file.to_s do
-      mode 0600
-      action :create
-    end
-
-    execute "Add the private key file `#{key_file.to_s}` to the keychain" do
-      command ["ssh-agent", "--", "ssh-add", "-K", "--", key_file.to_s]
-      user recipe.owner
-      group recipe.owner_group
-
-      # Kill any running SSH agent so that another one can start up and see the newly added key.
-      notifies :run, "execute[`killall -- ssh-agent`]", :immediately
-
-      action :run
-    end
+    resource_exists = true
+  rescue Chef::Exceptions::ResourceNotFound
+    resource_exists = false
   end
+
+  file key_file.to_s do
+    mode 0600
+    action :create
+  end if !resource_exists
 end
 
-execute "`killall -- ssh-agent`" do
-  command ["killall", "-u", recipe.owner, "--", "ssh-agent"]
-  returns [0, 1]
-  notifies :write, "log[shell restart notice]", :immediately
-  action :nothing
+directory "create `.profile.d` for #{recipe_full_name}" do
+  path (recipe.owner_dir + ".profile.d").to_s
+  owner recipe.owner
+  group recipe.owner_group
+  mode 0755
+  action :create
 end
 
-log "shell restart notice" do
-  message "A private key was added to your keychain, and any running SSH agents were killed. Please restart your" \
-    " shell for the change to take effect."
-  level :info
-  action :nothing
+# Install the Bash hook.
+template (owner_dir + ".profile.d/0010_ssh_keys.sh").to_s do
+  source "bash-0010_ssh_keys.sh.erb"
+  owner recipe.owner
+  group recipe.owner_group
+  mode 0644
+  helper(:key_files) { key_files }
+  action :create
 end
