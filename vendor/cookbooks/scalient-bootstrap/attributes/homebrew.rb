@@ -25,8 +25,7 @@ default["scalient-bootstrap"]["homebrew"]["formulas"] = [
 default["scalient-bootstrap"]["homebrew"]["casks"] = [
     "google-chrome",
     "google-drive",
-    "marked",
-    "omnigraffle"
+    "marked"
 ]
 
 default["scalient-bootstrap"]["homebrew"]["taps"] = [
