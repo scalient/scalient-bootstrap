@@ -1,29 +1,19 @@
 SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
-    build-essential (5.0.0)
-      compat_resource (>= 12.10)
-      mingw (>= 0.0.0)
-      seven_zip (>= 0.0.0)
-    chef_handler (1.4.0)
-    compat_resource (12.10.5)
-    homebrew (2.1.0)
-      build-essential (>= 2.1.2)
-    mingw (1.0.0)
-      compat_resource (>= 0.0.0)
-      seven_zip (>= 0.0.0)
-    ruby_build (0.8.0)
-    seven_zip (2.0.1)
-      windows (>= 1.2.2)
-    sudo (2.9.0)
-    windows (1.43.0)
-      chef_handler (>= 0.0.0)
+    compat_resource (12.16.3)
+    homebrew (3.0.0)
+    ruby_build (1.0.0)
+      yum-epel (>= 0.0.0)
+    sudo (3.3.1)
+    yum-epel (2.1.1)
+      compat_resource (>= 12.16.3)
 
 GIT
   remote: git@github.com:scalient/scalient-bootstrap
   path: vendor/cookbooks/scalient-bootstrap
   ref: master
-  sha: 2755add43ca6c34ef962941c66e5f02162b9fef8
+  sha: 7b070b79dda6c13df506253242c7fad84fc46ce0
   specs:
     scalient-bootstrap (0.9.0)
       osx-bootstrap (>= 0.0.0)
@@ -41,7 +31,7 @@ GIT
   remote: https://github.com/carsomyr/osx-bootstrap
   path: vendor/cookbooks/osx-bootstrap
   ref: master
-  sha: 499c8ed2debaf163b543aebcf1897ad1e5abf6a3
+  sha: a52e424e1ed05cfea0caa04cde0d279cd3296a1f
   specs:
     osx-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
@@ -51,9 +41,9 @@ GIT
 GIT
   remote: https://github.com/chef-rbenv/ruby_rbenv
   ref: master
-  sha: ea66c6f18be9cb54bae70b1280408bb09e47dc53
+  sha: 8f5172d224fa7242dcdcdeb3960486868f0322ea
   specs:
-    ruby_rbenv (1.0.1)
+    ruby_rbenv (1.1.0)
       ruby_build (>= 0.0.0)
 
 PATH
