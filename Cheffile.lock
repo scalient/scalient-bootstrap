@@ -31,7 +31,7 @@ GIT
 GIT
   remote: https://github.com/chef-rbenv/ruby_rbenv
   ref: master
-  sha: 025b504f5743ce798831ea90c1d954bb4c623c97
+  sha: 3593526610000fe473a1e2e6232fdd0a2777e9a9
   specs:
     ruby_rbenv (1.1.0)
       ruby_build (>= 0.0.0)

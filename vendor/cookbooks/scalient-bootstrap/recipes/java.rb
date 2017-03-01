@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright 2014 Roy Liu
+# Copyright 2014-2016 Roy Liu
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
 # use this file except in compliance with the License. You may obtain a copy of
@@ -14,51 +14,11 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-require "etc"
-require "pathname"
-
-class << self
-  include Chef::Mixin::ShellOut
-  include Homebrew::Mixin
-end
-
 include_recipe "osx-bootstrap::homebrew"
 
 # We need modifications to the `/etc/sudoers` file so that `sudo` invocation during cask installation doesn't blow up.
 include_recipe "scalient-bootstrap::sudo"
 
-recipe = self
-prefix = Pathname.new(node["osx-bootstrap"]["prefix"])
-
-ruby_block "refresh `sudo` timestamp" do
-  block do
-    homebrew_user = Etc.getpwnam(recipe.homebrew_owner).name
-
-    if recipe.shell_out((prefix + "bin/brew").to_s, "cask", "list", "--", "java").exitstatus == 1 &&
-        homebrew_user != "root" &&
-        STDIN.tty?
-      child_pid = fork do
-        user = Etc.getpwnam(homebrew_user)
-
-        Process.uid = user.uid
-        Process.gid = user.gid
-
-        prompt = "Installation of the `java` Homebrew cask invokes `sudo` noninteractively as unprivileged user" \
-          " #{homebrew_user}. Please refresh their `sudo` timestamp to ensure success: "
-
-        exec("sudo", "-v", "-p", prompt)
-      end
-
-      _, exit_status = Process.waitpid2(child_pid)
-
-      raise "`sudo` timestamp refresh failed" \
-        if exit_status != 0
-    end
-
-    recipe.homebrew_cask "java" do
-      action :update
-    end
-  end
-
-  action :run
+homebrew_cask "java" do
+  action :update
 end
