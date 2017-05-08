@@ -1,10 +1,10 @@
 SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
-    build-essential (8.0.0)
+    build-essential (8.0.1)
       mingw (>= 1.1)
       seven_zip (>= 0.0.0)
-    compat_resource (12.16.3)
+    compat_resource (12.19.0)
     dmg (3.1.1)
     git (6.0.0)
       build-essential (>= 0.0.0)
