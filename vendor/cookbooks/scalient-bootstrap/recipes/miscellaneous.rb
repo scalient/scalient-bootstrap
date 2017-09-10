@@ -51,3 +51,13 @@ plist_file "com.apple.LaunchServices" do
 
   action :create
 end
+
+plist_file "com.apple.desktopservices" do
+  # Don't write `.DS_Store` files to network volumes.
+  content(DSDontWriteNetworkStores: "true")
+
+  # We need to restart `Finder` for the changes to take effect.
+  notifies :run, "execute[`killall -- Finder`]", :immediately
+
+  action :create
+end
