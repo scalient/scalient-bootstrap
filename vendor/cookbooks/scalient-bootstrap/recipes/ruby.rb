@@ -28,7 +28,6 @@ include_recipe "scalient-bootstrap::java"
 
 recipe = self
 prefix = Pathname.new(node["osx-bootstrap"]["prefix"])
-rbenv_root = prefix + "var/rbenv"
 versions = node["osx-bootstrap"]["rbenv"]["versions"]
 global_version = node["osx-bootstrap"]["rbenv"]["global_version"]
 
@@ -55,7 +54,6 @@ node["scalient-bootstrap"]["ruby"]["gems"].each do |gem|
         recipe.as_user(recipe.owner) do
           recipe.rbenv_gem gem do
             user recipe.owner
-            root_path rbenv_root.to_s
             rbenv_version version
             action :nothing
           end.run_action(:install)
@@ -89,8 +87,8 @@ ruby_block "run RubyMine postinstall" do
       owner recipe.owner
       group recipe.owner_group
       mode 0755
-      helper(:config_dir) { recipe.owner_dir + "Library/Preferences" + version_name }
-      helper(:cache_dir) { recipe.owner_dir + "Library/Caches" + version_name }
+      helper(:config_dir) {recipe.owner_dir + "Library/Preferences" + version_name}
+      helper(:cache_dir) {recipe.owner_dir + "Library/Caches" + version_name}
       action :create
     end
   end
