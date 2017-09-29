@@ -16,7 +16,7 @@ GIT
   remote: https://github.com/carsomyr/osx-bootstrap
   path: vendor/cookbooks/osx-bootstrap
   ref: master
-  sha: 37e522c2d95dd5c8450eb39db9d984adeb37de08
+  sha: eb85844f65cc0fe0630ef8d50b7a4b98c7687627
   specs:
     osx-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
@@ -26,7 +26,7 @@ GIT
 GIT
   remote: https://github.com/chef-rbenv/ruby_rbenv
   ref: master
-  sha: b8da739563acd05e892407c6232d3e909a1367ad
+  sha: 6b8b24563dba2780b100d5f7eda26a5a48fbc073
   specs:
     ruby_rbenv (2.0.4)
 
