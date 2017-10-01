@@ -28,18 +28,6 @@ service "com.apple.rcd" do
   action :disable
 end
 
-plist_file "com.apple.iokit.AmbientLightSensor" do
-  # Automatically adjust display and keyboard brightness.
-  adjust_brightness = prefs["ambient_light_sensor"]["adjust_brightness"]
-
-  set "Automatic Display Enabled", adjust_brightness
-  set "Automatic Keyboard Enabled", adjust_brightness
-
-  owner "root"
-  format :binary
-  action :update
-end
-
 plist_file "com.apple.LaunchServices" do
   # Don't warn about applications freshly downloaded from the internet.
   content(LSQuarantine: prefs["launch_services"]["ls_quarantine"])

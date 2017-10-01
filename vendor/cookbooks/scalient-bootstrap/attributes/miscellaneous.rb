@@ -14,5 +14,4 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-default["scalient-bootstrap"]["miscellaneous"]["ambient_light_sensor"]["adjust_brightness"] = false
 default["scalient-bootstrap"]["miscellaneous"]["launch_services"]["ls_quarantine"] = false
