@@ -8,7 +8,7 @@ GIT
   remote: https://github.com/carsomyr/chef-plist
   path: vendor/cookbooks/plist
   ref: master
-  sha: 03db81f0abfa6b06e3144925e92488b3d3a20393
+  sha: b66cf5a243c26b33a8e822c69fd5beb20bf60836
   specs:
     plist (0.9.4)
 
@@ -16,7 +16,7 @@ GIT
   remote: https://github.com/carsomyr/osx-bootstrap
   path: vendor/cookbooks/osx-bootstrap
   ref: master
-  sha: f2f441b8ed2a0b23ac21b0cddbda7836b2127bfd
+  sha: 074501a14d845b910e5e4ef92bcb99d159ffaff0
   specs:
     osx-bootstrap (0.9.0)
       homebrew (>= 0.0.0)

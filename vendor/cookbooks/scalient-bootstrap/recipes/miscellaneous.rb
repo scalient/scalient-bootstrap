@@ -30,7 +30,7 @@ end
 
 plist_file "com.apple.LaunchServices" do
   # Don't warn about applications freshly downloaded from the internet.
-  content(LSQuarantine: prefs["launch_services"]["ls_quarantine"])
+  set "LSQuarantine", prefs["launch_services"]["ls_quarantine"]
 
   format :binary
 
@@ -42,7 +42,7 @@ end
 
 plist_file "com.apple.desktopservices" do
   # Don't write `.DS_Store` files to network volumes.
-  content(DSDontWriteNetworkStores: "true")
+  set "DSDontWriteNetworkStores", "true"
 
   # We need to restart `Finder` for the changes to take effect.
   notifies :run, "execute[`killall -- Finder`]", :immediately
