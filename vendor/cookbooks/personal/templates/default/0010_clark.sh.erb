@@ -20,12 +20,21 @@ alias s='cd ~/Documents/Work/'
 alias dbv='psql vbp_production'
 alias emacs='emacs -nw'
 
+alias aws='ssh -i ~/Google\ Drive/cws/work/slatech/clients/casey/casey_aws_key.pem ubuntu@23.20.162.40'
+alias vbp='ssh -i ~/Google\ Drive/cws/work/slatech/clients/vbp/vbp_aws_key.pem ubuntu@34.192.33.223'
+alias ecat='cd ~/Documents/Work/scalient/www-visionbp'
+alias f='cd ~/Documents/Work/scalient/foodrescuex'
+alias thr='cd ~/Documents/Work/affective/www-affective'
+alias fr='source export_env.bash ; ./manage.py runserver'
+alias enc='openssl des -in ~/Google\ Drive/cws/work/scalient/412FR/cc.txt -out ~/Google\ Drive/cws/work/scalient/412FR/cc.txt.enc'
+alias dec='openssl des -d -in ~/Google\ Drive/cws/work/scalient/412FR/cc.txt.enc -out ~/Google\ Drive/cws/work/scalient/412FR/cc.txt'
+
 function get () {
-  scp visionbp@gyumri.pair.com:"$1" /Users/clark/Downloads
+  scp clarkslater@clarkslater.pairserver.com:"$1" /Users/clark/Downloads
 }
 
 function put () {
-  scp "$1" visionbp@gyumri.pair.com:
+  scp "$1" clarkslater@clarkslater.pairserver.com:
 }
 
 export EDITOR='emacs -nw'
