@@ -14,7 +14,7 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-include_recipe "osx-bootstrap::preferences"
+include_recipe "os-bootstrap::preferences"
 
 prefs = node["scalient-bootstrap"]["miscellaneous"]
 

@@ -17,7 +17,7 @@
 # Ensure that the `sudo` cookbook's attributes are loaded first.
 include_attribute "sudo"
 
-# These defaults were copied verbatim from the OS X base installation.
+# These defaults were copied verbatim from the macOS base installation.
 default["authorization"]["sudo"]["sudoers_defaults"] = [
     "env_reset",
     "env_keep += \"BLOCKSIZE\"",

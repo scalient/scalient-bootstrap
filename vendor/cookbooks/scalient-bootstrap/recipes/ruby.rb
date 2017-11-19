@@ -18,18 +18,18 @@ require "etc"
 require "pathname"
 
 class << self
-  include OsX::Bootstrap
-  include OsX::Bootstrap::Rbenv
+  include Os::Bootstrap
+  include Os::Bootstrap::Rbenv
 end
 
-include_recipe "osx-bootstrap::rbenv"
-include_recipe "osx-bootstrap::homebrew"
+include_recipe "os-bootstrap::rbenv"
+include_recipe "os-bootstrap::homebrew"
 include_recipe "scalient-bootstrap::java"
 
 recipe = self
-prefix = Pathname.new(node["osx-bootstrap"]["prefix"])
-versions = node["osx-bootstrap"]["rbenv"]["versions"]
-global_version = node["osx-bootstrap"]["rbenv"]["global_version"]
+prefix = Pathname.new(node["os-bootstrap"]["prefix"])
+versions = node["os-bootstrap"]["rbenv"]["versions"]
+global_version = node["os-bootstrap"]["rbenv"]["global_version"]
 
 versions = [versions] \
   if versions.is_a?(String)

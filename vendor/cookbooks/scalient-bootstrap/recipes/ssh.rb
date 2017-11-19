@@ -19,10 +19,10 @@ require "pathname"
 require "shellwords"
 
 class << self
-  include OsX::Bootstrap
+  include Os::Bootstrap
 end
 
-include_recipe "osx-bootstrap::ssh"
+include_recipe "os-bootstrap::ssh"
 
 recipe = self
 work_dir = Pathname.new(node["scalient-bootstrap"]["work_root"])

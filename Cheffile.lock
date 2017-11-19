@@ -13,12 +13,12 @@ GIT
     plist (0.9.4)
 
 GIT
-  remote: https://github.com/carsomyr/osx-bootstrap
-  path: vendor/cookbooks/osx-bootstrap
+  remote: https://github.com/carsomyr/os-bootstrap
+  path: vendor/cookbooks/os-bootstrap
   ref: master
   sha: 074501a14d845b910e5e4ef92bcb99d159ffaff0
   specs:
-    osx-bootstrap (0.9.0)
+    os-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
       plist (>= 0.0.0)
       ruby_rbenv (>= 0.0.0)
@@ -34,11 +34,11 @@ PATH
   remote: vendor/cookbooks/scalient-bootstrap
   specs:
     scalient-bootstrap (0.9.0)
-      osx-bootstrap (>= 0.0.0)
+      os-bootstrap (>= 0.0.0)
       sudo (>= 0.0.0)
 
 DEPENDENCIES
-  osx-bootstrap (>= 0)
+  os-bootstrap (>= 0)
   plist (>= 0)
   ruby_rbenv (>= 0)
   scalient-bootstrap (>= 0)

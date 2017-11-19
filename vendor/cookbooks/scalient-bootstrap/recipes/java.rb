@@ -14,7 +14,7 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-include_recipe "osx-bootstrap::homebrew"
+include_recipe "os-bootstrap::homebrew"
 
 # We need modifications to the `/etc/sudoers` file so that `sudo` invocation during cask installation doesn't blow up.
 include_recipe "scalient-bootstrap::sudo"

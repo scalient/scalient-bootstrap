@@ -18,7 +18,7 @@ require "pathname"
 require "shellwords"
 
 class << self
-  include OsX::Bootstrap
+  include Os::Bootstrap
 end
 
 include_recipe "scalient-bootstrap::homebrew"

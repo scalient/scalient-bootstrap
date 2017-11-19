@@ -14,10 +14,10 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-include_recipe "osx-bootstrap"
-include_recipe "osx-bootstrap::gnupg2"
-include_recipe "osx-bootstrap::editor"
-include_recipe "osx-bootstrap::ruby"
+include_recipe "os-bootstrap"
+include_recipe "os-bootstrap::gnupg2"
+include_recipe "os-bootstrap::editor"
+include_recipe "os-bootstrap::ruby"
 include_recipe "scalient-bootstrap::java"
 include_recipe "scalient-bootstrap::homebrew"
 include_recipe "scalient-bootstrap::sudo"

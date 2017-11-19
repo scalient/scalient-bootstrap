@@ -14,7 +14,7 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-include_recipe "osx-bootstrap::homebrew"
+include_recipe "os-bootstrap::homebrew"
 
 node["scalient-bootstrap"]["homebrew"]["taps"].each do |tap|
   homebrew_tap tap do

@@ -13,5 +13,5 @@ version "0.9.0"
 supports "mac_os_x"
 supports "mac_os_x_server"
 
-depends "osx-bootstrap"
+depends "os-bootstrap"
 depends "sudo"
