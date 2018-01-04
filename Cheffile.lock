@@ -2,7 +2,7 @@ SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
     homebrew (4.2.0)
-    sudo (3.5.3)
+    sudo (4.0.0)
 
 GIT
   remote: https://github.com/carsomyr/chef-plist
@@ -16,7 +16,7 @@ GIT
   remote: https://github.com/carsomyr/os-bootstrap
   path: vendor/cookbooks/os-bootstrap
   ref: master
-  sha: c0e62cf07d52bb1d83251b7bcb7bf79d1f3a6dc2
+  sha: bf394f058ef66462fbbda063be631f0afdb8e192
   specs:
     os-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
@@ -26,7 +26,7 @@ GIT
 GIT
   remote: https://github.com/chef-rbenv/ruby_rbenv
   ref: master
-  sha: 46df66c598a46d5790d0b3a9660d84e2f8d5bedb
+  sha: e2bd52eb47ba7b7c0f57c15ef84b84f37cfe6052
   specs:
     ruby_rbenv (2.0.5)
 
