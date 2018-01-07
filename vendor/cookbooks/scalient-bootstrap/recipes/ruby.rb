@@ -72,18 +72,18 @@ end
 
 ruby_block "run RubyMine postinstall" do
   block do
-    version_line_pattern = Regexp.new("\\Arubymine: (.*),.*\\z")
+    version_line_pattern = Regexp.new("\\Arubymine: (.*)\\..*,.*\\z")
 
-    version = version_line_pattern.match(
+    major_minor_version = version_line_pattern.match(
         shell_out!(
             (prefix + "bin/brew").to_s, "cask", "info", "--", "rubymine", user: recipe.owner
         ).stdout.split("\n", -1)[0]
     )[1]
 
-    version_name = "RubyMine#{version}"
+    version_name = "RubyMine#{major_minor_version}"
 
     recipe.template (prefix + "bin/mine").to_s do
-      source "ruby-mine.erb"
+      source "mine.erb"
       owner recipe.owner
       group recipe.owner_group
       mode 0755
