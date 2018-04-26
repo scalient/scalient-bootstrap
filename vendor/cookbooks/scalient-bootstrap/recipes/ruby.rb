@@ -83,7 +83,7 @@ ruby_block "run RubyMine postinstall" do
     version_name = "RubyMine#{major_minor_version}"
 
     recipe.template (prefix + "bin/mine").to_s do
-      source "mine.erb"
+      source "ruby-mine.erb"
       owner recipe.owner
       group recipe.owner_group
       mode 0755
