@@ -16,7 +16,7 @@ GIT
   remote: https://github.com/carsomyr/os-bootstrap
   path: vendor/cookbooks/os-bootstrap
   ref: master
-  sha: 9e2726dcdef4e598db1c1c056a6ab8ee1dd96401
+  sha: 869fdd4e296256b28868a7862d58eb941d77c8d7
   specs:
     os-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
