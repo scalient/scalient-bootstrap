@@ -66,13 +66,12 @@ node["scalient-bootstrap"]["ruby"]["gems"].each do |gem|
 end
 
 homebrew_cask "rubymine" do
-  notifies :run, "ruby_block[run RubyMine postinstall]", :immediately
   action :update
 end
 
 ruby_block "run RubyMine postinstall" do
   block do
-    version_line_pattern = Regexp.new("\\Arubymine: (.*)\\..*,.*\\z")
+    version_line_pattern = Regexp.new("\\Arubymine: (.*),.*\\z")
 
     major_minor_version = version_line_pattern.match(
         shell_out!(
@@ -93,5 +92,5 @@ ruby_block "run RubyMine postinstall" do
     end
   end
 
-  action :nothing
+  action :run
 end
