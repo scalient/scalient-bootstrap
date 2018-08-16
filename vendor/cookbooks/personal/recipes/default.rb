@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright 2014 Clark Slater
+# Copyright 2014-2018 Clark Slater
 # All rights reserved.
 
 class << self
-  include OsX::Bootstrap
+  include Os::Bootstrap
 end
 
 recipe = self
