@@ -71,7 +71,7 @@ end
 
 ruby_block "run RubyMine postinstall" do
   block do
-    version_line_pattern = Regexp.new("\\Arubymine: (.*),.*\\z")
+    version_line_pattern = Regexp.new("\\Arubymine: (.*)\\..*,.*\\z")
 
     major_minor_version = version_line_pattern.match(
         shell_out!(
