@@ -9,5 +9,5 @@
 #                 ||     ||
 
 <% key_files.each do |key_file| %>
-ssh-add -K -- <%= Shellwords.escape(key_file.to_s) -%> &> /dev/null
+ssh-add -- <%= Shellwords.escape(key_file.to_s) -%> &> /dev/null
 <% end %>
