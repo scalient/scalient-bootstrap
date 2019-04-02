@@ -10,7 +10,6 @@
     "recipe[os-bootstrap::xcode]",
     "recipe[os-bootstrap::preferences]",
     "recipe[os-bootstrap::machine]",
-    "recipe[os-bootstrap::includes]",
     "recipe[scalient-bootstrap]",
     "recipe[scalient-bootstrap::homebrew]",
     "recipe[scalient-bootstrap::sudo]",
