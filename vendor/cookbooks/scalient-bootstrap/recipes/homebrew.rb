@@ -16,6 +16,9 @@
 
 include_recipe "os-bootstrap::homebrew"
 
+# We need modifications to the `/etc/sudoers` file so that `sudo` invocation during cask installation doesn't blow up.
+include_recipe "scalient-bootstrap::sudo"
+
 # These taps provide specially categorized casks.
 [
     "homebrew/cask-drivers",

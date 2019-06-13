@@ -24,7 +24,6 @@ end
 
 include_recipe "os-bootstrap::rbenv"
 include_recipe "os-bootstrap::homebrew"
-include_recipe "scalient-bootstrap::java"
 
 recipe = self
 prefix = Pathname.new(node["os-bootstrap"]["prefix"])
