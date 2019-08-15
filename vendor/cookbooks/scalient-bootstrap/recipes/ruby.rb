@@ -70,7 +70,7 @@ end
 
 ruby_block "run RubyMine postinstall" do
   block do
-    version_line_pattern = Regexp.new("\\Arubymine: (.*)\\..*,.*\\z")
+    version_line_pattern = Regexp.new("\\Arubymine: (.*?\\..*?)(?:\\..*)?,.*\\z")
 
     major_minor_version = version_line_pattern.match(
         shell_out!(
@@ -85,8 +85,8 @@ ruby_block "run RubyMine postinstall" do
       owner recipe.owner
       group recipe.owner_group
       mode 0755
-      helper(:config_dir) {recipe.owner_dir + "Library/Preferences" + version_name}
-      helper(:cache_dir) {recipe.owner_dir + "Library/Caches" + version_name}
+      helper(:config_dir) { recipe.owner_dir + "Library/Preferences" + version_name }
+      helper(:cache_dir) { recipe.owner_dir + "Library/Caches" + version_name }
       action :create
     end
   end
