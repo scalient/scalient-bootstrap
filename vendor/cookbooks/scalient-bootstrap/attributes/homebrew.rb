@@ -26,8 +26,7 @@ default["scalient-bootstrap"]["homebrew"]["formulas"] = [
 default["scalient-bootstrap"]["homebrew"]["casks"] = [
     "google-chrome-beta",
     "google-drive-file-stream",
-    "java",
-    "marked"
+    "java"
 ]
 
 default["scalient-bootstrap"]["homebrew"]["taps"] = [
