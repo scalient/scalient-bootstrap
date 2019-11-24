@@ -16,7 +16,7 @@ GIT
   remote: https://github.com/carsomyr/os-bootstrap
   path: vendor/cookbooks/os-bootstrap
   ref: master
-  sha: 0ee6d9cf7fd1817c8feaf5aebc2db4878cd6e36a
+  sha: d433d2778215ab23ec04a724f6afe27c3c8cf7ad
   specs:
     os-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
@@ -26,9 +26,9 @@ GIT
 GIT
   remote: https://github.com/chef-rbenv/ruby_rbenv
   ref: master
-  sha: 19b88614bf84c6d5a7acf8548da28b3151cee751
+  sha: a1a87b6a10e56828307669507bee3f37e46ba082
   specs:
-    ruby_rbenv (2.2.0)
+    ruby_rbenv (2.3.0)
 
 PATH
   remote: vendor/cookbooks/scalient-bootstrap
