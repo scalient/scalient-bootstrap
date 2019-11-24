@@ -27,6 +27,7 @@ include_recipe "os-bootstrap::homebrew"
 
 recipe = self
 prefix = Pathname.new(node["os-bootstrap"]["prefix"])
+rbenv_root = prefix + "var/rbenv"
 versions = node["os-bootstrap"]["rbenv"]["versions"]
 global_version = node["os-bootstrap"]["rbenv"]["global_version"]
 
@@ -54,6 +55,7 @@ node["scalient-bootstrap"]["ruby"]["gems"].each do |gem|
           recipe.rbenv_gem gem do
             user recipe.owner
             rbenv_version version
+            root_path rbenv_root.to_s
             action :nothing
           end.run_action(:install)
         end
