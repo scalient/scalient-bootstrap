@@ -65,33 +65,3 @@ node["scalient-bootstrap"]["ruby"]["gems"].each do |gem|
     end
   end
 end
-
-homebrew_cask "rubymine" do
-  action :update
-end
-
-ruby_block "run RubyMine postinstall" do
-  block do
-    version_line_pattern = Regexp.new("\\Arubymine: (.*?\\..*?)(?:\\..*)?,.*\\z")
-
-    major_minor_version = version_line_pattern.match(
-        shell_out!(
-            (prefix + "bin/brew").to_s, "cask", "info", "--", "rubymine", user: recipe.owner
-        ).stdout.split("\n", -1)[0]
-    )[1]
-
-    version_name = "RubyMine#{major_minor_version}"
-
-    recipe.template (prefix + "bin/mine").to_s do
-      source "ruby-mine.erb"
-      owner recipe.owner
-      group recipe.owner_group
-      mode 0755
-      helper(:config_dir) { recipe.owner_dir + "Library/Preferences" + version_name }
-      helper(:cache_dir) { recipe.owner_dir + "Library/Caches" + version_name }
-      action :create
-    end
-  end
-
-  action :run
-end
