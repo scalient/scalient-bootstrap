@@ -15,10 +15,8 @@
 # the License.
 
 default["scalient-bootstrap"]["homebrew"]["formulas"] = [
-    "cmake",
     "imagemagick",
     "node",
-    "postgresql",
     "rbenv-bundler",
     "rbenv-multichef"
 ]
