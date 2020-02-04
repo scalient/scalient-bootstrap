@@ -2,13 +2,13 @@ SITE
   remote: https://supermarket.getchef.com/api/v1
   specs:
     homebrew (5.0.8)
-    sudo (5.4.4)
+    sudo (5.4.5)
 
 GIT
   remote: git@github.com:scalient/scalient-bootstrap
   path: vendor/cookbooks/scalient-bootstrap
   ref: master
-  sha: ebc0650e2b352313dd7b7e7b8c562cd63d10ae33
+  sha: 845e5d329e2eca8e741a1a3a88f82a6aecf81afc
   specs:
     scalient-bootstrap (0.9.0)
       os-bootstrap (>= 0.0.0)
@@ -26,7 +26,7 @@ GIT
   remote: https://github.com/carsomyr/os-bootstrap
   path: vendor/cookbooks/os-bootstrap
   ref: master
-  sha: 50cd96ea6b54f5fa34872967376a0cd749fe42b2
+  sha: 14eceac67b1f56100c472451a6775447fc4a4076
   specs:
     os-bootstrap (0.9.0)
       homebrew (>= 0.0.0)
@@ -36,9 +36,9 @@ GIT
 GIT
   remote: https://github.com/chef-rbenv/ruby_rbenv
   ref: master
-  sha: fcd41a5bdae7f07f3a4ac2b8db05a222c5b95a7a
+  sha: be309908016f93a2cd0acbbee8a3a9b8408c675b
   specs:
-    ruby_rbenv (2.3.0)
+    ruby_rbenv (2.3.1)
 
 PATH
   remote: vendor/cookbooks/personal
