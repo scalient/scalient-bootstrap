@@ -87,8 +87,8 @@ ruby_block "run RubyMine postinstall" do
       owner recipe.owner
       group recipe.owner_group
       mode 0755
-      helper(:config_dir) { recipe.owner_dir + "Library/Preferences" + version_name }
-      helper(:cache_dir) { recipe.owner_dir + "Library/Caches" + version_name }
+      helper(:config_dir) { recipe.owner_dir + "Library/Application Support/JetBrains" + version_name }
+      helper(:cache_dir) { recipe.owner_dir + "Library/Caches/JetBrains" + version_name }
       action :create
     end
   end
