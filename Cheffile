@@ -18,7 +18,8 @@ site "https://supermarket.getchef.com/api/v1"
 
 cookbook "os-bootstrap",
          github: "carsomyr/os-bootstrap",
-         path: "vendor/cookbooks/os-bootstrap"
+         path: "vendor/cookbooks/os-bootstrap",
+         ref: "main"
 cookbook "plist",
          github: "carsomyr/chef-plist",
          path: "vendor/cookbooks/plist"
