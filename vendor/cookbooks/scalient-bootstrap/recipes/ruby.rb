@@ -76,7 +76,7 @@ ruby_block "run RubyMine postinstall" do
 
     major_minor_version = version_line_pattern.match(
         shell_out!(
-            (prefix + "bin/brew").to_s, "cask", "info", "--", "rubymine", user: recipe.owner
+            (prefix + "bin/brew").to_s, "info", "--cask", "--", "rubymine", user: recipe.owner
         ).stdout.split("\n", -1)[0]
     )[1]
 
