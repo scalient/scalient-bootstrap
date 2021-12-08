@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright 2014 Roy Liu
+# frozen_string_literal: true
+
+# Copyright 2014-2021 Roy Liu
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
 # use this file except in compliance with the License. You may obtain a copy of
@@ -15,18 +15,17 @@
 # the License.
 
 default["scalient-bootstrap"]["homebrew"]["formulas"] = [
-    "imagemagick",
-    "node",
-    "rbenv-bundler",
-    "rbenv-multichef"
+  "imagemagick",
+  "node",
+  "rbenv-bundler",
+  "rbenv-multichef"
 ]
 
 default["scalient-bootstrap"]["homebrew"]["casks"] = [
-    "google-chrome-beta",
-    "google-drive",
-    "java"
+  "google-chrome-beta",
+  "google-drive"
 ]
 
 default["scalient-bootstrap"]["homebrew"]["taps"] = [
-    "carsomyr/rbenv-multichef"
+  "carsomyr/rbenv-multichef"
 ]
