@@ -31,6 +31,8 @@ prefix = Pathname.new(node["os-bootstrap"]["prefix"])
 rbenv_root = prefix.join("var/rbenv")
 versions = node["os-bootstrap"]["rbenv"]["versions"]
 global_version = node["os-bootstrap"]["rbenv"]["global_version"]
+work_dir = Pathname.new(node["scalient-bootstrap"]["work_root"])
+rubocop_yml_file = work_dir.join("scalient/playbook/coding_conventions/.rubocop.yml")
 
 versions = [versions] \
   if versions.is_a?(String)
@@ -95,4 +97,14 @@ ruby_block "run RubyMine postinstall" do
   end
 
   action :run
+end
+
+if rubocop_yml_file.file?
+  # Link the `.rubocop.yml` file from the Scalient Playbook into the user's home directory to serve as a default.
+  link recipe.owner_dir.join(".rubocop.yml").to_s do
+    to rubocop_yml_file.to_s
+    owner recipe.owner
+    group recipe.owner_group
+    action :create
+  end
 end
