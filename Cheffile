@@ -18,7 +18,8 @@ site "https://supermarket.getchef.com/api/v1"
 
 cookbook "os-bootstrap",
          github: "carsomyr/os-bootstrap",
-         path: "vendor/cookbooks/os-bootstrap"
+         path: "vendor/cookbooks/os-bootstrap",
+         ref: "main"
 cookbook "personal",
          path: "vendor/cookbooks/personal"
 cookbook "plist",
@@ -28,4 +29,7 @@ cookbook "ruby_rbenv",
          github: "chef-rbenv/ruby_rbenv"
 cookbook "scalient-bootstrap",
          git: "git@github.com:scalient/scalient-bootstrap",
-         path: "vendor/cookbooks/scalient-bootstrap"
+         path: "vendor/cookbooks/scalient-bootstrap",
+         ref: "main"
+# There seems to be a problem with version 5.4.7.
+cookbook "sudo", "< 5.4.7"

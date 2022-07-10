@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-#
-# Copyright 2014-2018 Clark Slater
+
+# Copyright 2014-2022 Clark Slater
 # All rights reserved.
 
 class << self
