@@ -7,35 +7,23 @@
 alias wipe='rm -f *~ ; rm -f .*~'
 alias d='ls -LF'
 alias lt='ls -lth'
-alias casey='ssh casey@vidar.webspinners.net'
-alias v='ssh visionbp@gyumri.pair.com'
-alias pair='ssh clarkslater@clarkslater.pairserver.com'
-alias tom='ssh tomcat@vbp1.com'
-alias tom2='ssh tomcat@vbp2.com'
-alias cs='ssh clark@vbp1.com'
-alias cs2='ssh clark@vbp2.com'
-alias rod='echo password is D0deck ; ssh mcmahonc@kuwae.pair.com'
-alias ve='tail -100f ~/Documents/scalient/www-visionbp/log/development.log'
-alias s='cd ~/Documents/Work/'
-alias dbv='psql vbp_production'
 alias emacs='emacs -nw'
 
-alias aws='ssh -i ~/Google\ Drive/cws/work/slatech/clients/casey/casey_aws_key.pem ubuntu@23.20.162.40'
-alias vbp='ssh -i ~/Google\ Drive/cws/work/slatech/clients/vbp/vbp_aws_key.pem ubuntu@34.192.33.223'
-alias ecat='cd ~/Documents/Work/scalient/www-visionbp'
-alias f='cd ~/Documents/Work/foodrescuex/www-foodrescuex'
+alias pair='ssh clarkslater@clarkslater.pairserver.com'
+alias v2='ssh visionbp2@visionbp2.pairserver.com'
+alias casey='ssh -i ~/Google\ Drive/cws/work/slatech/clients/casey/casey_aws_key.pem ubuntu@23.20.162.40'
+alias casey2='ssh -i ~/Google\ Drive/cws/work/slatech/clients/casey/casey_aws_key.pem ubuntu@3.239.161.17'
+alias rod='echo password is D0deck ; ssh mcmahonc@kuwae.pair.com'
+
+alias e='cd ~/Documents/Work/visionbp/www-visionbp'
+alias p='cd ~/Documents/Work/purple/cms/api'
+alias c='cd ~/Documents/Work/casey/www-caseyusa'
 alias thr='cd ~/Documents/Work/affective/www-affective'
-alias fr='source export_env.bash ; ./manage.py runserver'
-alias enc='openssl des -in ~/Google\ Drive/cws/work/scalient/412FR/cc.txt -out ~/Google\ Drive/cws/work/scalient/412FR/cc.txt.enc'
-alias dec='openssl des -d -in ~/Google\ Drive/cws/work/scalient/412FR/cc.txt.enc -out ~/Google\ Drive/cws/work/scalient/412FR/cc.txt'
 
-function get () {
-  scp clarkslater@clarkslater.pairserver.com:"$1" /Users/clark/Downloads
-}
-
-function put () {
-  scp "$1" clarkslater@clarkslater.pairserver.com:
-}
+alias dbv='psql vbp_production'
+alias dbp='psql --host=production.cgvofaflaiwn.us-east-1.rds.amazonaws.com --port=5432 --username=postgres --password --dbname=purple'
+alias aws_rem='aws sesv2 delete-suppressed-destination --email-address clark@slatech.com'
+alias aws_sup='aws sesv2 list-suppressed-destinations'
 
 export EDITOR='emacs -nw'
 export EMAIL='clark@slatech.com'
