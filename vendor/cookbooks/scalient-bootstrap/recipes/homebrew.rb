@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright 2014 Roy Liu
+# frozen_string_literal: true
+
+# Copyright 2014-2023 Roy Liu
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
 # use this file except in compliance with the License. You may obtain a copy of
@@ -18,9 +18,8 @@ include_recipe "os-bootstrap::homebrew"
 
 # These taps provide specially categorized casks.
 [
-    "homebrew/cask-drivers",
-    "homebrew/cask-fonts",
-    "homebrew/cask-versions"
+  "homebrew/cask-fonts",
+  "homebrew/cask-versions",
 ].each do |tap|
   homebrew_tap tap do
     action :tap
