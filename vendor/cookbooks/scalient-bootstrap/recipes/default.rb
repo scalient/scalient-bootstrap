@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# frozen_string_literal: true
 #
 # Copyright 2014-2016 Roy Liu
 #
@@ -17,6 +17,7 @@
 include_recipe "os-bootstrap"
 include_recipe "os-bootstrap::editor"
 include_recipe "os-bootstrap::gnupg2"
+include_recipe "os-bootstrap::java"
 include_recipe "os-bootstrap::ruby"
 include_recipe "scalient-bootstrap::chef"
 include_recipe "scalient-bootstrap::gnu_utils"
