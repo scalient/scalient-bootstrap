@@ -16,16 +16,6 @@
 
 include_recipe "os-bootstrap::homebrew"
 
-# These taps provide specially categorized casks.
-[
-  "homebrew/cask-fonts",
-  "homebrew/cask-versions",
-].each do |tap|
-  homebrew_tap tap do
-    action :tap
-  end
-end
-
 node["scalient-bootstrap"]["homebrew"]["taps"].each do |tap|
   homebrew_tap tap do
     action :tap
