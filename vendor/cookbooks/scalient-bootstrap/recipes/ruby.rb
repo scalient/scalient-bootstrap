@@ -19,55 +19,15 @@ require "pathname"
 
 class << self
   include Os::Bootstrap
-  include Os::Bootstrap::Rbenv
   include Os::Bootstrap::Homebrew
 end
 
-include_recipe "os-bootstrap::rbenv"
 include_recipe "os-bootstrap::homebrew"
 
 recipe = self
 prefix = Pathname.new(node["os-bootstrap"]["prefix"])
-rbenv_root = prefix.join("var/rbenv")
-versions = node["os-bootstrap"]["rbenv"]["versions"]
-global_version = node["os-bootstrap"]["rbenv"]["global_version"]
 work_dir = Pathname.new(node["scalient-bootstrap"]["work_root"])
 rubocop_yml_file = work_dir.join("scalient/playbook/coding_conventions/.rubocop.yml")
-
-versions = [versions] \
-  if versions.is_a?(String)
-
-versions = versions.map do |version|
-  version = ENV["RBENV_VERSION"] \
-    if version == "inherit"
-
-  version
-end
-
-global_version = ENV["RBENV_VERSION"] \
-  if global_version == "inherit"
-
-versions = versions.push(global_version).uniq \
-  if global_version
-
-node["scalient-bootstrap"]["ruby"]["gems"].each do |gem|
-  versions.each do |version|
-    ruby_block "install gem #{gem} for rbenv Ruby version #{version}" do
-      block do
-        recipe.as_user(recipe.owner) do
-          recipe.rbenv_gem gem do
-            user recipe.owner
-            rbenv_version version
-            root_path rbenv_root.to_s
-            action :nothing
-          end.run_action(:install)
-        end
-      end
-
-      action :run
-    end
-  end
-end
 
 homebrew_cask "rubymine" do
   action :update
