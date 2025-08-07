@@ -22,7 +22,7 @@ default["scalient-bootstrap"]["homebrew"]["formulas"] = [
 ]
 
 default["scalient-bootstrap"]["homebrew"]["casks"] = [
-  "google-chrome-beta",
+  "google-chrome@beta",
   "google-drive"
 ]
 
