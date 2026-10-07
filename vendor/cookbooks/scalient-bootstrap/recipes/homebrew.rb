@@ -14,11 +14,26 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
+class << self
+  include Os::Bootstrap
+  include Os::Bootstrap::Homebrew
+end
+
 include_recipe "os-bootstrap::homebrew"
+
+recipe = self
 
 node["scalient-bootstrap"]["homebrew"]["taps"].each do |tap|
   homebrew_tap tap do
     action :tap
+    notifies :run, "execute[`brew trust -- #{tap}`]", :immediately
+  end
+
+  execute "`brew trust -- #{tap}`" do
+    command [recipe.homebrew_executable.to_s, "trust", "--", tap]
+    returns 0
+    user recipe.owner
+    action :nothing
   end
 end
 
