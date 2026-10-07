@@ -33,32 +33,6 @@ homebrew_cask "rubymine" do
   action :update
 end
 
-ruby_block "run RubyMine postinstall" do
-  block do
-    version_line_pattern = Regexp.new("\\A.*rubymine: (.*?\\..*?)(?:\\..*)?,.*\\z")
-
-    major_minor_version = version_line_pattern.match(
-      shell_out!(
-        recipe.homebrew_executable.to_s, "info", "--cask", "--", "rubymine", user: recipe.owner
-      ).stdout.split("\n", -1)[0]
-    )[1]
-
-    version_name = "RubyMine#{major_minor_version}"
-
-    recipe.template prefix.join("bin/mine").to_s do
-      source "ruby-mine.erb"
-      owner recipe.owner
-      group recipe.owner_group
-      mode 0o755
-      helper(:config_dir) { recipe.owner_dir.join("Library/Application Support/JetBrains", version_name) }
-      helper(:cache_dir) { recipe.owner_dir.join("Library/Caches/JetBrains", version_name) }
-      action :create
-    end
-  end
-
-  action :run
-end
-
 if rubocop_yml_file.file?
   # Link the `.rubocop.yml` file from the Scalient Playbook into the user's home directory to serve as a default.
   link recipe.owner_dir.join(".rubocop.yml").to_s do
